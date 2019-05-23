@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Canvas Sketchpad</title>
+    <style>
+        #background,
+        #drawboard {
+            width: 900px;
+            height: 600px;
+            display: inline-block;
+        }
+
+        #background {
+
+            background: white;
+            border: solid grey 1px;
+            display: inline-block;
+            box-shadow: 3px 6px 6px 3px #888888;
+        }
+
+        #toolbox {
+            display: inline-block;
+            width: 120px;
+            float: left;
+            padding-left: 20px;
+            padding-right: 20px;
+            
+        }
+
+        #editbox {
+            display: block;
+            width: 1500px;
+            padding-left: 160px;
+            padding-bottom: 10px;
+
+        }
+
+        button,
+        input {
+            width: 100px;
+            height: 52px;
+            margin: 4px;
+        }
+        
+        input{
+            border-radius: 20px;
+            border: none;
+        }
+
+        button {
+            
+            border: none;
+            background-color: snow;
+            color: darkorchid;
+            border-radius: 20px;
+            font-size: 17px;
+            font-family: sans-serif;
+            
+        }
+
+        button:hover {
+            background-color: tomato;
+        }
+
+    
+        body{
+            background: linear-gradient(to bottom right,  #d9a7c7, #C6FFDD) fixed;
+        }
+
+        .focusbtn {
+            background-color: tomato;
+        }
+        
+        #linewidth {
+            text-align: center;
+            font-size: 20px;
+            font-weight: 600;
+        }
+        
+        #tips {
+            position: relative;
+            display: inline-block;
+            width: 200px;
+            height: 300px;
+            left: 20px;
+            top: -150px;
+        }
+        
+        img{
+            pointer-events: none;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div id="editbox">
+        <button id="move" class="btn"><img src="https://userscontent2.emaze.com/images/e8222ca3-4c4b-4d37-a9a2-9ee6ccfcb52a/96dbfa09bf0ad62a404823c0b5b2daf9.png" alt="" width="25px"> Select</button>
+        
+        <button id="delete" class="btn"><img src="https://png.icons8.com/metro/1600/delete.png" alt="" width="25px"> Delete</button>
+        
+        <button id="copy" class="btn"><img src="https://png.icons8.com/metro/1600/copy.png" alt="" width="25px"> Copy</button>
+        
+        <button id="undo" class="btn"><img src="https://png.icons8.com/metro/1600/undo.png" alt="" width="25px"> Undo</button>
+        
+        <button id="redo" class="btn"><img src="https://png.icons8.com/metro/1600/redo.png" alt="" width="25px"> Redo</button>
+        
+        <button id="reset" class="btn"><img src="https://cdn0.iconfinder.com/data/icons/media-player/100/player-08-512.png" alt="" width="25px"> Reset</button>
+        
+        <button id="save" class="btn"><img src="https://png.icons8.com/metro/1600/save.png" alt="" width="25px"> Save</button>
+        
+        <button id="load" class="btn"><img src="https://image.flaticon.com/icons/png/512/62/62395.png" alt="" width="25px"> Load</button>
+    </div>
+
+    <div id="toolbox">
+        <button id="pencil" class="btn"><img src="https://upload.wikimedia.org/wikipedia/commons/0/0d/Demo_pencil.png" alt="" width="20px"> Pencil</button>
+        
+        <button id="line" class="btn" img><img src="https://www.shareicon.net/data/512x512/2016/06/18/596410_line_512x512.png" alt="" width="22px"> Line</button>
+        
+        <button id="poly" class="btn"><img src="http://cdn.onlinewebfonts.com/svg/img_183901.png" alt="" width="25px"> Polygon</button>
+        
+        <button id="rect" class="btn"><img src="http://cdn.onlinewebfonts.com/svg/img_468929.png" alt="" width="25px;">Rectangle</button>
+        
+        <button id="oval" class="btn"><img src="http://cdn.onlinewebfonts.com/svg/img_448739.png" alt="" width="25px"> Ellipse</button>
+        
+        <button id="square" class="btn"><img src="http://awmc.unc.edu/awmc/map_data/symbols/square.png" alt="" width="16px"> Square</button>
+        
+        <button id="circle" class="btn"><img src="https://png.icons8.com/small/1600/filled-circle.png" alt="" width="20px"> Circle</button>
+        
+        <button id="eraser" class="btn"><img src="http://cdn.onlinewebfonts.com/svg/img_259199.png" alt="" width="20px;"> Eraser</button>
+        
+        <input type="file" id="loadimg" name='img' style="display: none;" />
+        <input type="color" id="color" style="width: 95px;" />
+        <input type="number" id="linewidth" value="3"/>
+        <br><br>
+    </div>
+
+    <div id="background">
+        <canvas id="drawboard" width="900px" height="600px"></canvas>
+    </div>
+    
+    <div id="tips">
+        <p>Use Tips:
+        <li>Click "select" to enter select mode.</li>
+        <li>In select mode, double click to select an element (become orange),  then click and drag to move the element. </li>
+        <li>To deselect an element, just double click it again.</li>
+        <li>Double click more elements to group or ungroup them.</li>
+        <li>Once elements are selected, we can perform delete/copy.</li>
+        <li>To adjust line width, just change the number in the textbox at bottom left.</li>
+        </p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="sketchpad.js"></script>
+
+</body>
+
+</html>
